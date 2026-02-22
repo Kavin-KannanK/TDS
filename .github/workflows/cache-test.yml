@@ -13,5 +13,5 @@ jobs:
         with:
           key: cache-55b60f3
           path: ~/.npm
-      - name: Echo cache result
-        run: echo "Cache result: ${{ steps.cache-step.outputs.cache-hit }}"
+      - name: echo cache result
+        run: echo "Cache result: ${{ steps.cache-step-outputs.cache-hit }}"
