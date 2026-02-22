@@ -1,16 +1,14 @@
 name: Cache Test
-
 on: [push]
-
 jobs:
-  test:
+  cache-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: prime-cache-55b60f3
-      id: cache-step
       uses: actions/cache@v4
       with:
         key: cache-55b60f3
         path: ~/.npm
-    - run: echo "Cache result: ${{ steps.cache-step.outputs.cache-hit }}"
+    - name: Echo cache result  
+      run: echo "Cache result: ${{ steps.prime-cache-55b60f3.outputs.cache-hit }}"
