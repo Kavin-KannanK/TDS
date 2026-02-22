@@ -1,15 +1,19 @@
-name: Cache Test
-on: [push]
+
+
+name: My First Action
+
+on: [push]  # Runs every time you push code
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Free computer (runner) to use
+    
     steps:
-      - uses: actions/checkout@v4
       - name: prime-cache-55b60f3
-        id: cache-step
-        uses: actions/cache@v4
-        with:
-          key: cache-55b60f3
-          path: ~/.npm
-      - name: Echo result
-        run: echo "Cache result: ${{ steps.cache-step.outputs.cache-hit }}"
+        uses: actions/checkout@v4  # Grabs your repo files
+        
+      - name: 23f2001813@ds.study.iitm.ac.in  # Your required step!
+        run: echo "Hello from my action!"
+        
+      - name: List files
+        run: ls -la  # Shows what files are there
