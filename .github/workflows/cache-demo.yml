@@ -5,13 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
     - uses: actions/setup-node@v4
-      with: 
-        node-version: '20'      # Fixed indentation
+      with:
+        node-version: '20'
+    
     - name: prime-cache-55b60f3
       uses: actions/cache@v4
       with:
         key: cache-55b60f3
         path: node_modules
-    - run: npm ci || npm install    # Fallback if no lockfile
-    - run: npm test || echo "Done!"
+    
+    - run: npm ci
+    
+    - run: npm test
