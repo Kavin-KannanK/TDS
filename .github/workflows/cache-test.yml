@@ -1,0 +1,21 @@
+name: Cache Test
+
+on: [push]  # Runs on every push to any branch
+
+jobs:
+  test-cache:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: prime-cache-55b60f3  # Exact name required
+      uses: actions/cache@v4
+      with:
+        key: cache-55b60f3  # Exact key required
+        path: ~/.npm        # Caches npm deps (common example)
+      id: cache-step        # Gives us access to outputs
+    
+    - name: Echo cache result
+      run: echo "Cache hit/miss: ${{ steps.cache-step.outputs.cache-hit }}"
